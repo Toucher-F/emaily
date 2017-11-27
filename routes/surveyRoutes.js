@@ -14,6 +14,7 @@ module.exports = app => {
     const surveys = await Survey.find({ _user: req.user.id }).select({
       recipients: false
     });
+
     res.send(surveys);
   });
 
@@ -23,15 +24,12 @@ module.exports = app => {
 
   app.post("/api/surveys/webhooks", (req, res) => {
     const p = new Path("/api/surveys/:surveyId/:choice");
+
     _.chain(req.body)
       .map(({ email, url }) => {
         const match = p.test(new URL(url).pathname);
         if (match) {
-          return {
-            email,
-            surveyId: match.surveyId,
-            choice: match.choice
-          };
+          return { email, surveyId: match.surveyId, choice: match.choice };
         }
       })
       .compact()
@@ -68,7 +66,7 @@ module.exports = app => {
       dateSent: Date.now()
     });
 
-    // Greate place to send an email!!
+    // Great place to send an email!
     const mailer = new Mailer(survey, surveyTemplate(survey));
 
     try {

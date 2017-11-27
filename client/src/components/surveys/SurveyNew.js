@@ -1,4 +1,4 @@
-//SurveyNew shows SurveyForm and SurveyReview
+// SurveyNew shows SurveyForm and SurveyFormReview
 import React, { Component } from "react";
 import { reduxForm } from "redux-form";
 import SurveyForm from "./SurveyForm";
@@ -8,7 +8,7 @@ class SurveyNew extends Component {
   state = { showFormReview: false };
 
   renderContent() {
-    if (this.state.showFormReview === true) {
+    if (this.state.showFormReview) {
       return (
         <SurveyFormReview
           onCancel={() => this.setState({ showFormReview: false })}

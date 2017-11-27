@@ -1,4 +1,4 @@
-//SurveyForm shows a form for user to add input
+// SurveyForm shows a form for a user to add input
 import _ from "lodash";
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
@@ -21,7 +21,6 @@ class SurveyForm extends Component {
       );
     });
   }
-
   render() {
     return (
       <div>
@@ -32,7 +31,7 @@ class SurveyForm extends Component {
           </Link>
           <button type="submit" className="teal btn-flat right white-text">
             Next
-            <i className="material-icons right">done</i>
+            <i className="material-icons right">chevron_right</i>
           </button>
         </form>
       </div>
@@ -47,7 +46,7 @@ function validate(values) {
 
   _.each(formFields, ({ name }) => {
     if (!values[name]) {
-      errors[name] = "You must provide a value";
+      errors[name] = `You must provide a ${name}`;
     }
   });
 
