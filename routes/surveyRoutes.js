@@ -82,4 +82,11 @@ module.exports = app => {
       res.status(422).send(err);
     }
   });
+
+  app.delete("/api/delete/:surveyId", requireLogin, async (req, res) => {
+    //console.log(req.params.surveyId);
+    //console.log(req.user._id);
+    await Survey.deleteOne({ _id: req.params.surveyId, _user: req.user._id });
+    res.send("Deleted!");
+  });
 };

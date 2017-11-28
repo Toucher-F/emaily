@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchSurveys } from "../../actions";
+import { fetchSurveys, deleteSurveys } from "../../actions";
+import { withRouter } from "react-router-dom";
 
 class SurveyList extends Component {
   componentDidMount() {
@@ -11,7 +12,19 @@ class SurveyList extends Component {
       return (
         <div className="card darken-1" key={survey._id}>
           <div className="card-content">
-            <span className="card-title">{survey.title}</span>
+            <span className="card-title">
+              {survey.title}
+              <button
+                className="btn-floating red right"
+                onClick={() =>
+                  this.props.deleteSurveys(survey._id, this.props.history)
+                }
+              >
+                <i className="material-icons" style={{ marginTop: "5px" }}>
+                  delete
+                </i>
+              </button>
+            </span>
             <p>{survey.body}</p>
             <p className="right">
               Sent On: {new Date(survey.dateSent).toLocaleDateString()}
@@ -35,4 +48,6 @@ function mapStateToProps({ surveys }) {
   return { surveys };
 }
 
-export default connect(mapStateToProps, { fetchSurveys })(SurveyList);
+export default connect(mapStateToProps, { fetchSurveys, deleteSurveys })(
+  withRouter(SurveyList)
+);
