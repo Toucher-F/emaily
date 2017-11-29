@@ -85,9 +85,12 @@ module.exports = app => {
 
   app.post("/api/delete", requireLogin, async (req, res) => {
     //console.log(req.params.surveyId);
-    console.log(req.body);
+    //console.log(req.body);
     const surveyId = req.body.surveyId;
     await Survey.deleteOne({ _id: surveyId, _user: req.user._id });
-    res.send("Deleted!");
+    const surveys = await Survey.find({ _user: req.user.id }).select({
+      recipients: false
+    });
+    res.send(surveys);
   });
 };
