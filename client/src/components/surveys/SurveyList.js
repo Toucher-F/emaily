@@ -17,7 +17,10 @@ class SurveyList extends Component {
               <button
                 className="btn-floating red right"
                 onClick={() =>
-                  this.props.deleteSurveys(survey._id, this.props.history)
+                  this.props.deleteSurveys(
+                    { surveyId: survey._id },
+                    this.props.history
+                  )
                 }
               >
                 <i className="material-icons" style={{ marginTop: "5px" }}>

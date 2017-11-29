@@ -83,10 +83,11 @@ module.exports = app => {
     }
   });
 
-  app.delete("/api/delete/:surveyId", requireLogin, async (req, res) => {
+  app.post("/api/delete", requireLogin, async (req, res) => {
     //console.log(req.params.surveyId);
-    //console.log(req.user._id);
-    await Survey.deleteOne({ _id: req.params.surveyId, _user: req.user._id });
+    console.log(req.body);
+    const surveyId = req.body.surveyId;
+    await Survey.deleteOne({ _id: surveyId, _user: req.user._id });
     res.send("Deleted!");
   });
 };
