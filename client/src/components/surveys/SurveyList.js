@@ -16,15 +16,12 @@ class SurveyList extends Component {
               {survey.title}
               <button
                 className="btn-floating red right"
-                onClick={async () => {
-                  await this.props.deleteSurveys(
+                onClick={() =>
+                  this.props.deleteSurveys(
                     { surveyId: survey._id },
                     this.props.history
-                  );
-                  console.log(this);
-
-                  this.setState(null);
-                }}
+                  )
+                }
               >
                 <i className="material-icons" style={{ marginTop: "5px" }}>
                   delete
@@ -51,7 +48,8 @@ class SurveyList extends Component {
 }
 
 function mapStateToProps({ surveys }) {
-  return { surveys };
+  //get the state.surveys
+  return { surveys }; //return surveys component.props.surveys
 }
 
 export default connect(mapStateToProps, { fetchSurveys, deleteSurveys })(
