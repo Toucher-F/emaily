@@ -15,9 +15,20 @@ class Header extends Component {
           </li>
         );
       default:
+        <ul key="dropdown1" class="dropdown-content">
+          <li key="3" style={{ margin: "0 10px" }}>
+            Credits: {this.props.auth.credits}
+          </li>,
+          <li key="2">
+            <a href="/api/logout">Logout</a>
+          </li>
+        </ul>;
         return [
           <li key="1">
             <Payments />
+          </li>,
+          <li key="4" style={{ margin: "0 0 0 10px" }}>
+            {this.props.auth.displayName}
           </li>,
           <li key="3" style={{ margin: "0 10px" }}>
             Credits: {this.props.auth.credits}
