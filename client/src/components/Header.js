@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Payments from "./Payments";
 import DropdownMenu from "./DropdownMenu";
 
 class Header extends Component {
@@ -16,14 +15,14 @@ class Header extends Component {
           </li>
         );
       default:
-        return [
-          <li key="1">
-            <Payments />
-          </li>,
-          <DropdownMenu key="2" />
-        ];
+        return (
+          <li>
+            <DropdownMenu key="2" />
+          </li>
+        );
     }
   }
+
   render() {
     return (
       <nav>
@@ -34,7 +33,9 @@ class Header extends Component {
           >
             Emaily
           </Link>
-          <ul className="right">{this.renderContent()}</ul>
+          <ul className="right" style={{ margin: "0 10px 0 0" }}>
+            {this.renderContent()}
+          </ul>
         </div>
       </nav>
     );
