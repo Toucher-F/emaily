@@ -22,7 +22,7 @@ export const submitSurvey = (values, history) => async dispatch => {
     dispatch({ type: FETCH_USER, payload: res.data });
   } catch (err) {
     var toastContent = "Not enough Credits";
-    Materialize.toast(toastContent, 3000, "white green-text");
+    Materialize.toast(toastContent, 3000, "white red-text");
   }
 };
 

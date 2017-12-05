@@ -50,7 +50,9 @@ function validate(values) {
 
   _.each(formFields, ({ name }) => {
     if (!values[name] && name !== "sender") {
-      errors[name] = `You must provide a ${name}`;
+      errors[name] = `You must provide ${
+        name === "recipients" ? "recipients" : "a " + name
+      }`;
     }
   });
 
