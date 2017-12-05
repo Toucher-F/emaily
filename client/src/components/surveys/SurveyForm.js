@@ -18,6 +18,7 @@ class SurveyForm extends Component {
           type="text"
           label={label}
           name={name}
+          defaultValue={name === "sender" ? "no-reply@emaily.com" : ""}
         />
       );
     });

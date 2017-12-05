@@ -6,7 +6,10 @@ import Payments from "./Payments";
 class DropdownMenu extends Component {
   render() {
     return (
-      <Dropdown trigger={<Button>{this.props.auth.displayName}</Button>}>
+      <Dropdown
+        style={{ margin: "36px 0 0 0" }}
+        trigger={<Button>{this.props.auth.displayName}</Button>}
+      >
         <NavItem>Credits: {this.props.auth.credits}</NavItem>
         <NavItem href="#!">
           <Payments />

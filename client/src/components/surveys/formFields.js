@@ -3,5 +3,8 @@ export default [
   { label: "Subject Line", name: "subject" },
   { label: "Email Body", name: "body" },
   { label: "Recipient List", name: "recipients" },
-  { label: "Sender Email (optional)", name: "sender" }
+  {
+    label: "Sender Email (optional)",
+    name: "sender"
+  }
 ];
