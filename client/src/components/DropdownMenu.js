@@ -7,8 +7,15 @@ class DropdownMenu extends Component {
   render() {
     return (
       <Dropdown
-        style={{ margin: "36px 0 0 0" }}
-        trigger={<Button>{this.props.auth.displayName}</Button>}
+        style={{ margin: "62px 0 0 0" }}
+        trigger={
+          <li>
+            <a class="dropdown-button" href="#!" data-activates="dropdown1">
+              {this.props.auth.displayName}
+              <i class="material-icons right">arrow_drop_down</i>
+            </a>
+          </li>
+        }
       >
         <NavItem>Credits: {this.props.auth.credits}</NavItem>
         <NavItem href="#!">
