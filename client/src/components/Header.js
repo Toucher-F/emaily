@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
+import LoginDropdown from "./LoginDropdown";
 
 class Header extends Component {
   renderContent() {
@@ -11,7 +12,7 @@ class Header extends Component {
       case false:
         return (
           <li>
-            <a href="/auth/google">Login With Google</a>
+            <LoginDropdown key="3" />
           </li>
         );
       default:

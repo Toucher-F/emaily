@@ -10,6 +10,7 @@ class SortButton extends Component {
     return _.map(sortTypes, ({ label, name }) => {
       return (
         <Input
+          key={name}
           name="group1"
           type="radio"
           value={name}

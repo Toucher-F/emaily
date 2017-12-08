@@ -1,5 +1,6 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const FacebookStrategy = require("passport-facebook").Strategy;
 const mongoose = require("mongoose");
 const keys = require("../config/keys");
 
@@ -38,6 +39,32 @@ passport.use(
         googleId: profile.id,
         displayName: profile.displayName,
         email: profile.emails[0].value
+      }).save();
+      done(null, user);
+    }
+  )
+);
+
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: keys.facebookClientID,
+      clientSecret: keys.facebookClientSecret,
+      callbackURL: "/auth/facebook/callback",
+      proxy: true
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      const existingUser = await User.findOne({ facebookId: profile.id });
+
+      if (existingUser) {
+        // we already have a record with the given profile ID
+        return done(null, existingUser);
+      }
+
+      // we don't have a user record with this ID, make a new record
+      const user = await new User({
+        facebookId: profile.id,
+        displayName: profile.displayName
       }).save();
       done(null, user);
     }
