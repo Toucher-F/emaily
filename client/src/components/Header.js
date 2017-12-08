@@ -10,17 +10,9 @@ class Header extends Component {
       case null:
         return;
       case false:
-        return (
-          <li>
-            <LoginDropdown key="3" />
-          </li>
-        );
+        return <LoginDropdown key="3" />;
       default:
-        return (
-          <li>
-            <DropdownMenu key="2" />
-          </li>
-        );
+        return <DropdownMenu key="2" />;
     }
   }
 

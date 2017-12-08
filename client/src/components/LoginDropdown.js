@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Dropdown, Button, NavItem } from "react-materialize";
+import { Dropdown } from "react-materialize";
 
 class loginDropdown extends Component {
   render() {
@@ -8,8 +8,8 @@ class loginDropdown extends Component {
         style={{ margin: "63px 0 0 0" }}
         trigger={
           <li>
-            <a class="dropdown-button" href="#!" data-activates="dropdown1">
-              Login With<i class="material-icons right">arrow_drop_down</i>
+            <a className="dropdown-button" href="#!" data-activates="dropdown1">
+              Login With<i className="material-icons right">arrow_drop_down</i>
             </a>
           </li>
         }
