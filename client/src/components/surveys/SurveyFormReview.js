@@ -21,18 +21,18 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
   });
 
   return (
-    <div>
+    <div style={{ marginBottom: "300px" }}>
       <h5>Please confirm your entries</h5>
       {reviewFields}
       <button
-        className="yellow white-text darken-3 btn-flat"
+        className="yellow white-text darken-3 btn-flat waves-effect waves-light"
         onClick={onCancel}
       >
         Back
       </button>
       <button
         onClick={() => submitSurvey(formValues, history)}
-        className="green white-text btn-flat right"
+        className="green white-text btn-flat right waves-effect waves-light"
       >
         Send Survey
         <i className="material-icons right">email</i>

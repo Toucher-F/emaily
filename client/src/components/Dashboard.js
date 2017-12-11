@@ -5,7 +5,7 @@ import SortButton from "./SortButton";
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className="container">
       <label>
         <i className="material-icons " style={{ margin: "10px 0 0 10px" }}>
           sort

@@ -6,6 +6,7 @@ import Landing from "./Landing";
 import Header from "./Header";
 import Dashboard from "./Dashboard";
 import SurveyNew from "./surveys/SurveyNew";
+import AddFooter from "./Footer";
 
 class App extends Component {
   componentDidMount() {
@@ -14,19 +15,18 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="container">
-          <div>
-            <Header />
-            <Route
-              exact
-              path="/"
-              render={() =>
-                this.props.auth ? <Redirect to="/surveys" /> : <Landing />
-              }
-            />
-            <Route exact path="/surveys" component={Dashboard} />
-            <Route path="/surveys/new" component={SurveyNew} />
-          </div>
+        <div>
+          <Header />
+          <Route
+            exact
+            path="/"
+            render={() =>
+              this.props.auth ? <Redirect to="/surveys" /> : <Landing />
+            }
+          />
+          <Route exact path="/surveys" component={Dashboard} />
+          <Route path="/surveys/new" component={SurveyNew} />
+          <AddFooter />
         </div>
       </BrowserRouter>
     );

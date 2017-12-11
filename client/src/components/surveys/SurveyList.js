@@ -35,7 +35,7 @@ class SurveyList extends Component {
   }
 
   renderSurveys() {
-    console.log(this.props.surveys);
+    //console.log(this.props.surveys);
     if (this.props.surveys.length === 0) {
       return (
         <div className="row">
@@ -96,7 +96,13 @@ class SurveyList extends Component {
     }
   }
   render() {
-    return <div>{this.renderSurveys()}</div>;
+    let style = {
+      marginBottom: `${200 *
+        (3 -
+          (this.props.surveys.length === 0 ? 1 : this.props.surveys.length))}px`
+    };
+    console.log(style);
+    return <div style={style}>{this.renderSurveys()}</div>;
   }
 }
 
