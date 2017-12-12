@@ -37,7 +37,7 @@ class SurveyForm extends Component {
           </Link>
           <button
             type="submit"
-            className="teal btn-flat right white-text waves-effect waves-light"
+            className=" btn-flat right light-blue darken-1 white-text waves-effect "
           >
             Next
             <i className="material-icons right">done</i>

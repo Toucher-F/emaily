@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Modal } from "react-materialize";
 import { fetchSurveys, deleteSurveys, sortSurveys } from "../../actions";
 import { withRouter } from "react-router-dom";
 import emptyMailbox from "../../icons/empty-mailbox-edit.png";
@@ -65,19 +66,46 @@ class SurveyList extends Component {
               <div className="card-content">
                 <span className="card-title">
                   {survey.title}
-                  <button
-                    className="btn-floating red right"
-                    onClick={() =>
-                      this.props.deleteSurveys(
-                        { surveyId: survey._id },
-                        this.props.history
-                      )
+
+                  <Modal
+                    header={`Delete survey ${survey.title} ?`}
+                    trigger={
+                      <button className="btn-floating red right">
+                        <i
+                          className="material-icons"
+                          style={{ marginTop: "5px" }}
+                        >
+                          delete
+                        </i>
+                      </button>
+                    }
+                    actions={
+                      <div>
+                        <button
+                          className="btn red darken-2 modal-close modal-action"
+                          onClick={() =>
+                            this.props.deleteSurveys(
+                              { surveyId: survey._id },
+                              this.props.history
+                            )
+                          }
+                        >
+                          delete
+                        </button>
+                        <button
+                          style={{ marginRight: "20px" }}
+                          className="btn grey modal-close modal-action"
+                        >
+                          dismiss
+                        </button>
+                      </div>
                     }
                   >
-                    <i className="material-icons" style={{ marginTop: "5px" }}>
-                      delete
-                    </i>
-                  </button>
+                    <p>
+                      Once you remove a survey, there is no going back. Please
+                      be certain.
+                    </p>
+                  </Modal>
                 </span>
                 <p>{survey.body}</p>
                 <p className="right">
@@ -99,9 +127,11 @@ class SurveyList extends Component {
     let style = {
       marginBottom: `${200 *
         (3 -
-          (this.props.surveys.length === 0 ? 1 : this.props.surveys.length))}px`
+          (this.props.surveys.length === 0 || this.props.surveys.length > 3
+            ? 2.75
+            : this.props.surveys.length))}px`
     };
-    console.log(style);
+    //console.log(style);
     return <div style={style}>{this.renderSurveys()}</div>;
   }
 }

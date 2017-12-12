@@ -4,10 +4,10 @@ import { Footer } from "react-materialize";
 const AddFooter = () => {
   return (
     <Footer
-      copyrights="2017 Copyright"
+      copyrights=" &copy; 2017 Copyright"
       moreLinks={
         <a className="grey-text text-lighten-4 right" href="#!">
-          v0.171211
+          lianduanb@gmail.com
         </a>
       }
       links={
@@ -20,12 +20,18 @@ const AddFooter = () => {
               className="btn"
               style={{
                 color: "white",
-                backgroundColor: "#dd4b39",
+                backgroundColor: "#0077B5",
                 marginTop: "5px"
               }}
             >
-              <a className="grey-text text-lighten-3" href="#!">
-                <i className="fa fa-google-plus" style={{ margin: "0 4px" }} />Gmail
+              <a
+                className="grey-text text-lighten-3"
+                href="https://www.linkedin.com/in/lian-duan-9451a0155/"
+              >
+                <i
+                  className="fa fa-linkedin-square"
+                  style={{ margin: "0 4px" }}
+                />LinkedIn
               </a>
             </li>
           </div>
@@ -34,13 +40,16 @@ const AddFooter = () => {
               className="btn"
               style={{
                 color: "white",
-                backgroundColor: "#00aced",
+                backgroundColor: "#3a3133",
                 marginTop: "5px"
               }}
             >
-              <a className="grey-text text-lighten-3" href="#!">
-                <i className="fa fa-twitter" style={{ margin: "0 4px" }} />{" "}
-                Twitter
+              <a
+                className="grey-text text-lighten-3"
+                href="https://github.com/Toucher-F"
+              >
+                <i className="fa fa-github" style={{ margin: "0 4px" }} />{" "}
+                Github
               </a>
             </li>
           </div>
@@ -53,7 +62,10 @@ const AddFooter = () => {
                 marginTop: "5px"
               }}
             >
-              <a className="grey-text text-lighten-3" href="#!">
+              <a
+                className="grey-text text-lighten-3"
+                href="https://www.facebook.com/profile.php?id=100007672720757"
+              >
                 <i
                   className="fa fa-facebook official"
                   style={{ margin: "0 4px" }}
@@ -63,10 +75,12 @@ const AddFooter = () => {
           </div>
         </ul>
       }
-      className="example"
+      className="example  light-blue darken-4"
     >
-      <h5 className="white-text">Thanks for using Emaily!</h5>
-      <h6 className="grey-text text-lighten-4">Contributor:</h6>
+      <h5 className="white-text">Thank you for using Emaily!</h5>
+      <h6 className="grey-text text-lighten-4" style={{ marginTop: "10px" }}>
+        Contributor:
+      </h6>
       <p>Bill Duan</p>
       <p>Jonathan Hu</p>
     </Footer>

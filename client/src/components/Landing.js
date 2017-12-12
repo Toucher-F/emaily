@@ -1,6 +1,6 @@
 import React from "react";
-import email1 from "../images/timg.jpg";
-import email2 from "../images/email.jpg";
+import email1 from "../images/1920x1080-data_out_42_402786070-email-wallpapers.jpg";
+import email2 from "../images/mail-wallpaper-1920x1080.jpg";
 import { Parallax } from "react-materialize";
 
 const Landing = () => {
@@ -8,10 +8,10 @@ const Landing = () => {
     <div>
       <div>
         <Parallax imageSrc={email1} />
-        <div className="section white">
-          <div className="row container">
+        <div className="section blue darken-2">
+          <div className="row container white-text">
             <h2 className="header">Emaily</h2>
-            <p className="grey-text text-darken-3 lighten-3">
+            <p className="white-text text-darken-3 ">
               Collect feedback from your users!
             </p>
           </div>
