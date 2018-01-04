@@ -4,6 +4,7 @@ import { Modal } from "react-materialize";
 import { fetchSurveys, deleteSurveys, sortSurveys } from "../../actions";
 import { withRouter } from "react-router-dom";
 import emptyMailbox from "../../icons/empty-mailbox-edit.png";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 class SurveyList extends Component {
   componentDidMount() {
@@ -36,6 +37,12 @@ class SurveyList extends Component {
   }
 
   renderSurveys() {
+    const transitionOptions = {
+      transitionName: "fade",
+      transitionEnterTimeout: 500,
+      transitionLeaveTimeout: 500
+    };
+
     //console.log(this.props.surveys);
     if (this.props.surveys.length === 0) {
       return (
@@ -59,67 +66,69 @@ class SurveyList extends Component {
         </div>
       );
     } else {
-      return this.sortSurveys(this.props.surveys, this.props.sort).map(
-        survey => {
-          return (
-            <div className="card darken-1" key={survey._id}>
-              <div className="card-content">
-                <span className="card-title">
-                  {survey.title}
+      return (
+        <ReactCSSTransitionGroup {...transitionOptions}>
+          {this.sortSurveys(this.props.surveys, this.props.sort).map(survey => {
+            return (
+              <div className="card darken-1" key={survey._id}>
+                <div className="card-content">
+                  <span className="card-title">
+                    {survey.title}
 
-                  <Modal
-                    header={`Delete survey ${survey.title} ?`}
-                    trigger={
-                      <button className="btn-floating red right">
-                        <i
-                          className="material-icons"
-                          style={{ marginTop: "5px" }}
-                        >
-                          delete
-                        </i>
-                      </button>
-                    }
-                    actions={
-                      <div>
-                        <button
-                          className="btn red darken-2 modal-close modal-action"
-                          onClick={() =>
-                            this.props.deleteSurveys(
-                              { surveyId: survey._id },
-                              this.props.history
-                            )
-                          }
-                        >
-                          delete
+                    <Modal
+                      header={`Delete survey ${survey.title} ?`}
+                      trigger={
+                        <button className="btn-floating red right">
+                          <i
+                            className="material-icons"
+                            style={{ marginTop: "5px" }}
+                          >
+                            delete
+                          </i>
                         </button>
-                        <button
-                          style={{ marginRight: "20px" }}
-                          className="btn grey modal-close modal-action"
-                        >
-                          dismiss
-                        </button>
-                      </div>
-                    }
-                  >
-                    <p>
-                      Once you remove a survey, there is no going back. Please
-                      be certain.
-                    </p>
-                  </Modal>
-                </span>
-                <p>{survey.body}</p>
-                <p className="right">
-                  Sent On: {new Date(survey.dateSent).toLocaleDateString()}
-                </p>
-              </div>
+                      }
+                      actions={
+                        <div>
+                          <button
+                            className="btn red darken-2 modal-close modal-action"
+                            onClick={() =>
+                              this.props.deleteSurveys(
+                                { surveyId: survey._id },
+                                this.props.history
+                              )
+                            }
+                          >
+                            delete
+                          </button>
+                          <button
+                            style={{ marginRight: "20px" }}
+                            className="btn grey modal-close modal-action"
+                          >
+                            dismiss
+                          </button>
+                        </div>
+                      }
+                    >
+                      <p>
+                        Once you remove a survey, there is no going back. Please
+                        be certain.
+                      </p>
+                    </Modal>
+                  </span>
+                  <p>{survey.body}</p>
+                  <p className="right">
+                    Sent On: {new Date(survey.dateSent).toLocaleDateString()}
+                  </p>
+                </div>
 
-              <div className="card-action">
-                <a>Yes: {survey.yes}</a>
-                <a>No: {survey.no}</a>
+                <div className="card-action">
+                  <a>Yes: {survey.yes}</a>
+                  <a>No: {survey.no}</a>
+                </div>
               </div>
-            </div>
-          );
-        }
+            );
+          })}
+        </ReactCSSTransitionGroup>
       );
     }
   }
